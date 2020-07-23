@@ -8,22 +8,23 @@ import com.liurui.pojo.User;
 
 public interface UserMapper {
      /**
-      * ��ѯ
+      * ²éÑ¯
       */
+       //参数在网页修改
 	public List<User> getUser(@Param("id")int id);
 	
 	/**
-	 * ��
+	 * Ôö
 	 */
 	public int add(User user);
 	
 	/**
-	 * ��
+	 * ¸Ä
 	 */
 	public int update(User user);
 	
 	/**
-	 * ɾ
+	 * É¾
 	 */
 	public int drop(@Param("id")int id);
 }
