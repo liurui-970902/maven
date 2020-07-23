@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.liurui.Dao.UserMapper">
+   <!-- 增 -->
+   <insert id="add" parameterType="User">
+   INSERT INTO`user`(`name`,`age`,`sex`,`Pssions`) VALUE(#{name},#{age},#{sex},#{pssionsid})
+   </insert>
+   
+   
+   <!-- 删 -->
+   <delete id="drop">
+    DELETE FROM `user` WHERE `id` =#{id}
+   </delete>
+   
+   <!-- 改 -->
+   <update id="update" parameterType="User">
+      UPDATE `user` SET `name`=#{name} ,`age`=#{age} ,`sex`=#{sex}  ,`Pssions`=#{pssionsid} WHERE id=#{id}
+   </update>
+   
+   <!-- 查 -->
+   <select id="getUser" resultMap="usermap">
+     SELECT u.`id`,u.`name`,u.`age`,u.`sex`,p.`Pssions` FROM `user` AS u,`permissions` AS p WHERE u.`Pssions` =p.`id`
+     <if test="id!=0">
+      AND u.id=#{id}
+     </if>
+   </select>
+    
+    <resultMap type="User" id="usermap">
+       <id property="id" column="id"/>
+       <result property="name" column="name"/>
+       <result property="age" column="age"/>
+       <result property="sex" column="sex"/>
+       <result property="pssionsname" column="Pssions"/>
+    </resultMap>
+      
+ </mapper>
